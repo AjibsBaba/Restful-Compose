@@ -6,6 +6,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
@@ -47,13 +48,13 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun PostCardTitle(author: String = "Samuel Ajibade", timestamp: String = "2 days ago") {
+fun PostCardTitle(author: String? = "Samuel Ajibade", timestamp: String? = "2 days ago") {
     Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(4.dp)) {
         Image(imageVector = Icons.Default.Person, contentDescription = null )
         Column {
-            Text(text = author, fontWeight = FontWeight.SemiBold, fontSize = MaterialTheme.typography.body1.fontSize)
+            Text(text = "$author", fontWeight = FontWeight.SemiBold, fontSize = MaterialTheme.typography.body1.fontSize)
             Text(
-                text = timestamp,
+                text = "$timestamp",
                 fontWeight = FontWeight.Light,
                 fontSize = MaterialTheme.typography.caption.fontSize
             )
@@ -63,10 +64,10 @@ fun PostCardTitle(author: String = "Samuel Ajibade", timestamp: String = "2 days
 
 
 @Composable
-fun PostCardContent(content: String = "Lorem Ipsum blah blah  blah yada yada yada Lorem Ipsum blah blah  blah yada yada yada Lorem Ipsum blah blah  blah yada yada yada Lorem Ipsum blah blah  blah yada yada yada Lorem Ipsum blah blah" ) {
-    Column() {
+fun PostCardContent(content: String? = "Lorem Ipsum blah blah  blah yada yada yada Lorem Ipsum blah blah  blah yada yada yada Lorem Ipsum blah blah  blah yada yada yada Lorem Ipsum blah blah  blah yada yada yada Lorem Ipsum blah blah" ) {
+    Column {
         Text (
-            text = content,
+            text = "$content",
             fontSize = MaterialTheme.typography.subtitle1.fontSize,
             fontWeight = FontWeight.Normal, modifier = Modifier.padding(top = 10.dp))
     }
